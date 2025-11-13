@@ -1,11 +1,12 @@
 {
-    "Name": "云背包",
+    "Name": "Cloud Backpack",
     "Version": "1.0",
     "ApiVersion": "1.4",
-    "Description": "物品可云存储，更大空间，死亡不掉落，自带合成台。",
+    "Description": "Items can be stored in the cloud, larger space, no loss on death, comes with crafting table.",
     "ScVersion": "2.3.0.0",
     "Link": "https://m.schub.top/com/mods/preview/76",
     "Author": "JMing",
     "PackageName": "bee.CloudPack",
     "Dependencies": []
+    
 }
