@@ -1,0 +1,22 @@
+<Yun>
+	<EntityTemplate Name="Player" Guid="4be6c1c5-d65d-4537-8a8b-a391969e6dc2">
+		<MemberComponentTemplate Name="YunBeiBao" Guid="00000100-0000-0100-0001-000010000000" InheritanceParent="81a44c6a-c30a-4f53-8d64-0c30aabab8f9" >
+			<Parameter Name="SlotsCount" Guid="00001000-0000-0010-0001-000000000001" Value="3" Type="int" />
+			<Parameter Name="Class" Guid="00000100-0000-0000-0001-001000000002" Value="Yun.YunCompent" Type="string" />
+		</MemberComponentTemplate>
+	</EntityTemplate>
+    <Folder Name="Entities" Guid="5fcdf35f-7001-442c-883e-e0502b15d291">
+		<EntityTemplate Name="YunBeiBao" Guid="00001000-0000-0001-0010-000001000000">
+			<MemberComponentTemplate Name="Chest" InheritanceParent="7312ec8c-10c7-4133-85b4-4a35bd44c956" >
+				<Parameter Name="SlotsCount" Value="46" Type="int" />
+			</MemberComponentTemplate>
+			<MemberComponentTemplate Name="Yun" InheritanceParent="09a85cba-d94e-41b8-9497-f20ed942c17e" />
+		</EntityTemplate>
+		<EntityTemplate Name="CreateTable" Guid="00201000-0000-0001-0010-000001005000">
+			<MemberComponentTemplate Name="CraftingTable" Guid="00201000-0000-0001-0010-050001005000" InheritanceParent="48fdc8bb-8ca8-4d0f-af8d-25bfe9b56a19" >
+				<Parameter Name="SlotsCount" Value="11" Type="int" />
+			</MemberComponentTemplate>
+			<MemberComponentTemplate Name="BlockEntity" Guid="00201090-0900-0001-0010-050001005000" InheritanceParent="09a85cba-d94e-41b8-9497-f20ed942c17e" />
+		</EntityTemplate>
+	</Folder>
+</Yun>

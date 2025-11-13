@@ -1,0 +1,9 @@
+<ChestWidget xmlns="runtime-namespace:Game">
+  <BevelledRectangleWidget Size="680, 400" BevelSize="3" />
+  <LabelWidget CanvasWidget.Position="12, 14" Name="CouldChestLabel" Text="CouldChest" Font="{Fonts/Pericles}" Color="255, 255, 255, 192"/>
+  <LabelWidget CanvasWidget.Position="360, 14" Name="InventoryLabel" Text="Inventory" Font="{Fonts/Pericles}" Color="255, 255, 255, 192"/>
+  <BevelledButtonWidget CanvasWidget.Position="520, 4" Name="ArrowLeftButton" Style="{Styles/ButtonStyle_ArrowLeft}" VerticalAlignment="Center"/>
+  <BevelledButtonWidget CanvasWidget.Position="580, 4" Name="ArrowRightButton" Style="{Styles/ButtonStyle_ArrowRight}" VerticalAlignment="Center"/>
+  <GridPanelWidget CanvasWidget.Position="12, 60" Name="ChestGrid" ColumnsCount="6" RowsCount="6"/>
+  <GridPanelWidget CanvasWidget.Position="360, 60" Name="InventoryGrid" ColumnsCount="4" RowsCount="4"/>
+</ChestWidget>
