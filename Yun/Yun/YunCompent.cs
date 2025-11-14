@@ -49,7 +49,7 @@ namespace Yun
 					Margin = new Vector2(0f, 3f),
 					NormalSubtexture = ContentManager.Get<Subtexture>("Textures/GButton", null),
 					ClickedSubtexture = ContentManager.Get<Subtexture>("Textures/GButtonPress", null),
-					HorizontalAlignment = 2,
+					HorizontalAlignment = (WidgetAlignment)2,
 					IsEnabled = true
 				};
 				this.Player.GuiWidget.Children.Find<StackPanelWidget>("MoreContents", true).Children.Add(this.YButton);

@@ -15,21 +15,18 @@ namespace Yun
 			DatabaseObject databaseObject = GameManager.Project.GameDatabase.Database.FindDatabaseObject("YunBeiBao", GameManager.Project.GameDatabase.EntityTemplateType, true);
 			ValuesDictionary valuesDictionary = new ValuesDictionary();
 			valuesDictionary.PopulateFromDatabaseObject(databaseObject);
-			switch (type)
+
+			// Soporte para 20 páginas (0-19)
+			if (type >= 0 && type <= 99)
 			{
-			case 0:
-				valuesDictionary.GetValue<ValuesDictionary>("Yun").SetValue<Point3>("Coordinates", new Point3(0, 0, 1));
-				break;
-			case 1:
-				valuesDictionary.GetValue<ValuesDictionary>("Yun").SetValue<Point3>("Coordinates", new Point3(0, 1, 1));
-				break;
-			case 2:
-				valuesDictionary.GetValue<ValuesDictionary>("Yun").SetValue<Point3>("Coordinates", new Point3(0, 2, 1));
-				break;
-			case 3:
-				valuesDictionary.GetValue<ValuesDictionary>("Yun").SetValue<Point3>("Coordinates", new Point3(0, 3, 1));
-				break;
+				valuesDictionary.GetValue<ValuesDictionary>("Yun").SetValue<Point3>("Coordinates", new Point3(0, type, 1));
 			}
+			else
+			{
+				// Valor por defecto si está fuera del rango
+				valuesDictionary.GetValue<ValuesDictionary>("Yun").SetValue<Point3>("Coordinates", new Point3(0, 0, 1));
+			}
+
 			Entity entity = GameManager.Project.CreateEntity(valuesDictionary);
 			GameManager.Project.AddEntity(entity);
 		}

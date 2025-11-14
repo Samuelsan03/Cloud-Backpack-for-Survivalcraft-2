@@ -55,15 +55,20 @@ namespace Yun
 		// Token: 0x06000002 RID: 2 RVA: 0x00002294 File Offset: 0x00000494
 		private void Switch(int index)
 		{
-			bool flag = this.entities.GetBlockEntity(0, index, 1) == null;
-			bool flag2 = flag;
-			if (flag2)
+			// OPTIMIZADO: Buscar las entidades UNA sola vez
+			var blockEntity = this.entities.GetBlockEntity(0, index, 1);
+
+			if (blockEntity == null)
 			{
 				this.tools.YunUp(index);
 			}
 			else
 			{
-				this.player.ComponentGui.ModalPanelWidget = new CreateTableWidget(this.entities.GetBlockEntity(0, index, 1).Entity.FindComponent<ComponentChest>(true), this.entities.GetBlockEntity(1, 1, 1).Entity.FindComponent<ComponentCraftingTable>(true), index, this.player);
+				ComponentChest chest = blockEntity.Entity.FindComponent<ComponentChest>(true);
+				var craftingEntity = this.entities.GetBlockEntity(1, 1, 1);
+				ComponentCraftingTable craftingTable = craftingEntity?.Entity.FindComponent<ComponentCraftingTable>(true);
+
+				this.player.ComponentGui.ModalPanelWidget = new CreateTableWidget(chest, craftingTable, index, this.player);
 			}
 		}
 
@@ -71,16 +76,15 @@ namespace Yun
 		public override void Update()
 		{
 			this.ArrowLeftButton.IsEnabled = (this.index > 0);
-			this.ArrowRightButton.IsEnabled = (this.index < 3);
-			bool isClicked = this.ArrowRightButton.IsClicked;
-			bool flag = isClicked;
-			if (flag)
+			this.ArrowRightButton.IsEnabled = (this.index < 99);
+
+			// OPTIMIZADO: Eliminar variables booleanas innecesarias
+			if (this.ArrowRightButton.IsClicked)
 			{
 				this.Switch(this.index + 1);
 			}
-			bool isClicked2 = this.ArrowLeftButton.IsClicked;
-			bool flag2 = isClicked2;
-			if (flag2)
+
+			if (this.ArrowLeftButton.IsClicked)
 			{
 				this.Switch(this.index - 1);
 			}

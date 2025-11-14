@@ -49,15 +49,17 @@ namespace Yun
 		// Token: 0x0600000C RID: 12 RVA: 0x00002AF4 File Offset: 0x00000CF4
 		private void SwitchWidget(int index)
 		{
-			bool flag = this.entities.GetBlockEntity(0, index, 1) == null;
-			bool flag2 = flag;
-			if (flag2)
+			// OPTIMIZADO: Buscar la entidad UNA sola vez
+			var blockEntity = this.entities.GetBlockEntity(0, index, 1);
+
+			if (blockEntity == null)
 			{
 				this.tools.YunUp(index);
 			}
 			else
 			{
-				this.player.ComponentGui.ModalPanelWidget = new YunWidget(this.player, this.entities.GetBlockEntity(0, index, 1).Entity.FindComponent<ComponentChest>(true), index);
+				ComponentChest chest = blockEntity.Entity.FindComponent<ComponentChest>(true);
+				this.player.ComponentGui.ModalPanelWidget = new YunWidget(this.player, chest, index);
 			}
 		}
 
@@ -65,16 +67,15 @@ namespace Yun
 		public override void Update()
 		{
 			this.ArrowLeftButton.IsEnabled = (this.index > 0);
-			this.ArrowRightButton.IsEnabled = (this.index < 3);
-			bool isClicked = this.ArrowRightButton.IsClicked;
-			bool flag = isClicked;
-			if (flag)
+			this.ArrowRightButton.IsEnabled = (this.index < 99);
+
+			// OPTIMIZADO: Eliminar variables booleanas innecesarias
+			if (this.ArrowRightButton.IsClicked)
 			{
 				this.SwitchWidget(this.index + 1);
 			}
-			bool isClicked2 = this.ArrowLeftButton.IsClicked;
-			bool flag2 = isClicked2;
-			if (flag2)
+
+			if (this.ArrowLeftButton.IsClicked)
 			{
 				this.SwitchWidget(this.index - 1);
 			}
